@@ -4,5 +4,5 @@
 ## Games
 Pacman
 ```shell script
-python -m Pacman pacman.py
+python -m Pacman/pacman.py
 ```

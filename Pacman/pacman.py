@@ -1,9 +1,8 @@
 #Pacman in Python with PyGame
-#https://github.com/hbokmann/Pacman
+#credit https://github.com/hbokmann/Pacman
 
 import pygame
-#import pygame._view
-import numpy
+
 #enemy_speed =
 black = (0,0,0)
 white = (255,255,255)
@@ -412,13 +411,13 @@ def startGame():
   monsta_list.add(Pinky)
   all_sprites_list.add(Pinky)
 
-  # Inky=Ghost( i_w, m_h, "images/Inky.png" )
-  # monsta_list.add(Inky)
-  # all_sprites_list.add(Inky)
-  #
-  # Clyde=Ghost( c_w, m_h, "images/Clyde.png" )
-  # monsta_list.add(Clyde)
-  # all_sprites_list.add(Clyde)
+  Inky=Ghost( i_w, m_h, "images/Inky.png" )
+  monsta_list.add(Inky)
+  all_sprites_list.add(Inky)
+
+  Clyde=Ghost( c_w, m_h, "images/Clyde.png" )
+  monsta_list.add(Clyde)
+  all_sprites_list.add(Clyde)
 
   # Draw the grid
   for row in range(19):
@@ -496,17 +495,17 @@ def startGame():
       Blinky.changespeed(Blinky_directions,False,b_turn,b_steps,bl)
       Blinky.update(wall_list,False)
       #
-      # returned = Inky.changespeed(Inky_directions,False,i_turn,i_steps,il)
-      # i_turn = returned[0]
-      # i_steps = returned[1]
-      # Inky.changespeed(Inky_directions,False,i_turn,i_steps,il)
-      # Inky.update(wall_list,False)
-      #
-      # returned = Clyde.changespeed(Clyde_directions,"clyde",c_turn,c_steps,cl)
-      # c_turn = returned[0]
-      # c_steps = returned[1]
-      # Clyde.changespeed(Clyde_directions,"clyde",c_turn,c_steps,cl)
-      # Clyde.update(wall_list,False)
+      returned = Inky.changespeed(Inky_directions,False,i_turn,i_steps,il)
+      i_turn = returned[0]
+      i_steps = returned[1]
+      Inky.changespeed(Inky_directions,False,i_turn,i_steps,il)
+      Inky.update(wall_list,False)
+
+      returned = Clyde.changespeed(Clyde_directions,"clyde",c_turn,c_steps,cl)
+      c_turn = returned[0]
+      c_steps = returned[1]
+      Clyde.changespeed(Clyde_directions,"clyde",c_turn,c_steps,cl)
+      Clyde.update(wall_list,False)
 
       # See if the Pacman block has collided with anything.
       blocks_hit_list = pygame.sprite.spritecollide(Pacman, block_list, True)
@@ -539,8 +538,10 @@ def startGame():
       # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
       
       pygame.display.flip()
-    
+
+      #clock.tick(10)
       clock.tick(5)
+
 
 def doNext(message,left,all_sprites_list,block_list,monsta_list,pacman_collide,wall_list,gate):
   while True:
