@@ -2,6 +2,7 @@
 #credit https://github.com/hbokmann/Pacman
 
 import pygame
+import pygame_menu
 
 #enemy_speed =
 black = (0,0,0)
@@ -580,6 +581,29 @@ def doNext(message,left,all_sprites_list,block_list,monsta_list,pacman_collide,w
 
       clock.tick(10)
 
-startGame()
+#pygame.init()
+#surface = pygame.display.set_mode((600, 400))
+#screen
+
+def set_difficulty(value, difficulty):
+    # Do the job here !
+    pass
+
+def start_the_game():
+    # Do the job here !
+    pass
+
+menu = pygame_menu.Menu(300, 400, 'Welcome',
+                       theme=pygame_menu.themes.THEME_BLUE)
+
+menu.add_text_input('Name :', default='John Doe')
+menu.add_selector('Difficulty :', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+menu.add_button('Play', startGame)
+menu.add_button('Quit', pygame_menu.events.EXIT)
+
+menu.mainloop(screen)
+
+#
+#startGame()
 
 pygame.quit()
